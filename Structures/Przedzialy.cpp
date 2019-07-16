@@ -1,53 +1,57 @@
 
-#include <C:\Users\surja\CodeBlocks\MinGW\lib\gcc\mingw32\5.1.0\include\c++\mingw32\bits\stdc++.h>
+#include <bits\stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef long double ld;
- 
-struct point {
+
+struct point
+{
     int poz;
     int index;
 };
 
-
-bool comp(point &a, point &b){
+bool comp(point &a, point &b)
+{
     return a.poz < b.poz;
 }
- 
-int main(){
-   
 
- 
+int main()
+{
+
     int n;
-    cin>>n;
- 
+    cin >> n;
+
     point start[n];
     point end[n];
- 
+
     int index_to_position[n];
- 
-    for(int i = 0;i<n;i++){
-        cin>>start[i].poz>>end[i].poz;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> start[i].poz >> end[i].poz;
         start[i].index = end[i].index = i;
     }
- 
-    sort(start, start+n, comp);
-    sort(end, end+n, comp);
- 
-    for(int i = 0;i<n;i++){
+
+    sort(start, start + n, comp);
+    sort(end, end + n, comp);
+
+    for (int i = 0; i < n; i++)
+    {
         index_to_position[start[i].index] = i;
     }
- 
+
     int max_val = -1;
     int j;
-    for(int i = 0;i<n;i++){
-        if(max_val < i - index_to_position[end[i].index]){
+    for (int i = 0; i < n; i++)
+    {
+        if (max_val < i - index_to_position[end[i].index])
+        {
             max_val = i - index_to_position[end[i].index];
-            j=i;
+            j = i;
         }
     }
- 
-    cout<<start[index_to_position[end[j].index]].poz<<" "<<end[j].poz;
- 
+
+    cout << start[index_to_position[end[j].index]].poz << " " << end[j].poz;
+
     return 0;
 }

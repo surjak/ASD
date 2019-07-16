@@ -1,8 +1,8 @@
 //#include <iostream>
 //#include <cstdlib>
-#include <C:\Users\surja\CodeBlocks\MinGW\lib\gcc\mingw32\5.1.0\include\c++\mingw32\bits\stdc++.h>
+#include <bits\stdc++.h>
 using namespace std;
-const int n=11;
+const int n = 11;
 int partition(int arr[], int left, int right)
 {
     int i = left, j = right;
@@ -38,22 +38,27 @@ void quickSort(int arr[], int left, int right)
 }
 
 int insertionSort(int arr[], int a, int b)
-{if(b-a<=2)return arr[a];
-    if(b-a>1){int i, j, tmp;
-    for (i = a; i < b; i++)
+{
+    if (b - a <= 2)
+        return arr[a];
+    if (b - a > 1)
     {
-        j = i;
-        while (j > a && arr[j - 1] > arr[j])
+        int i, j, tmp;
+        for (i = a; i < b; i++)
         {
-            tmp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = tmp;
-            j--;
+            j = i;
+            while (j > a && arr[j - 1] > arr[j])
+            {
+                tmp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = tmp;
+                j--;
+            }
         }
-    }
-    if(b-a>=4)return arr[a+2];
-    if(b-a==3) return arr[a+1];
-
+        if (b - a >= 4)
+            return arr[a + 2];
+        if (b - a == 3)
+            return arr[a + 1];
     }
 }
 typedef long long ll;
@@ -61,24 +66,28 @@ typedef long double ld;
 
 void Median(int arr[], int length)
 {
-    int a=length/5+1;
-    int *tab=new int[a];
-    int j=0;
-    for(int i=0;i<length;i+=5)
+    int a = length / 5 + 1;
+    int *tab = new int[a];
+    int j = 0;
+    for (int i = 0; i < length; i += 5)
     {
-        if(i+5<=length) tab[j]=insertionSort(arr,i,i+5);
+        if (i + 5 <= length)
+            tab[j] = insertionSort(arr, i, i + 5);
         else
-            tab[j]=insertionSort(arr,i,length);
-              j++;
+            tab[j] = insertionSort(arr, i, length);
+        j++;
     }
-    
-   if(a!=1) Median(tab,a);
-   else {cout<<tab[0]; return;}
 
-    delete []tab;
+    if (a != 1)
+        Median(tab, a);
+    else
+    {
+        cout << tab[0];
+        return;
+    }
+
+    delete[] tab;
 }
-
-
 
 void sort5(int *T, int l, int r)
 {
@@ -169,25 +178,24 @@ int select(int *T, int l, int r, int k)
     }
 }
 
-
 int main()
 {
-    int arr[n]={1,1,42,1,15,1,21,11,13,11,1};
-   
+    int arr[n] = {1, 1, 42, 1, 15, 1, 21, 11, 13, 11, 1};
+
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
-    cout<<endl;
+    cout << endl;
     int m = select(arr, 0, n - 1, (n) / 2);
     cout << m << endl;
-    cout<<endl<<endl;
+    cout << endl
+         << endl;
     //quickSort(arr,0,n-1);
-    int counter=0;
+    int counter = 0;
     for (int i = 0; i < n; i++)
-        (arr[i]==m)?  counter++ : NULL ;
-        cout<<counter<<endl;
-        cout<< (bool)(counter>n/2);
-
+        (arr[i] == m) ? counter++ : NULL;
+    cout << counter << endl;
+    cout << (bool)(counter > n / 2);
 
     return 0;
 }

@@ -41,7 +41,7 @@ Node *create_node(int w)
 
     node->h = 0;
 
-    node->color = 'h'; // h bo chuj wie jaki kolor
+    node->color = 'h';
 
     return node;
 }

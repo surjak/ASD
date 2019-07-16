@@ -1,41 +1,27 @@
-// C++ program to print connected components in
-// an undirected graph
 #include <iostream>
 #include <list>
 
 using namespace std;
 
-// Graph class represents a undirected graph
-// using adjacency list representation
-
 class Graph
 {
 
-    int V; // No. of vertices
-
-    // Pointer to an array containing adjacency lists
+    int V;
 
     list<int> *adj;
-
-    // A function used by DFS
 
     void DFSUtil(int v, bool visited[]);
 
 public:
-    Graph(int V); // Constructor
+    Graph(int V);
 
     void addEdge(int v, int w);
 
     void connectedComponents();
 };
 
-// Method to print connected components in an
-// undirected graph
-
 void Graph::connectedComponents()
 {
-
-    // Mark all the vertices as not visited
 
     bool *visited = new bool[V];
 
@@ -51,10 +37,6 @@ void Graph::connectedComponents()
 
         {
 
-            // print all reachable vertices
-
-            // from v
-
             DFSUtil(v, visited);
 
             cout << "\n";
@@ -65,15 +47,9 @@ void Graph::connectedComponents()
 void Graph::DFSUtil(int v, bool visited[])
 {
 
-    // Mark the current node as visited and print it
-
     visited[v] = true;
 
     cout << v << " ";
-
-    // Recur for all the vertices
-
-    // adjacent to this vertex
 
     list<int>::iterator i;
 
@@ -92,8 +68,6 @@ Graph::Graph(int V)
     adj = new list<int>[V];
 }
 
-// method to add an undirected edge
-
 void Graph::addEdge(int v, int w)
 {
 
@@ -102,14 +76,10 @@ void Graph::addEdge(int v, int w)
     adj[w].push_back(v);
 }
 
-// Drive program to test above
-
 int main()
 {
 
-    // Create a graph given in the above diagram
-
-    Graph g(5); // 5 vertices numbered from 0 to 4
+    Graph g(5);
 
     g.addEdge(1, 0);
 

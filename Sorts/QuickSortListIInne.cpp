@@ -1,4 +1,4 @@
-#include <C:\Users\surja\CodeBlocks\MinGW\lib\gcc\mingw32\5.1.0\include\c++\mingw32\bits\stdc++.h>
+#include <bits\stdc++.h>
 using namespace std;
 
 struct node
